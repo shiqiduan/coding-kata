@@ -26,8 +26,8 @@ class Trie {
     }
 
     public boolean search(String word) {
-        Trie trie = searchPrefix(word);
-        return trie != null && trie.end;
+        Trie node = searchPrefix(word);
+        return node != null && node.end;
     }
 
     public boolean startsWith(String prefix) {
