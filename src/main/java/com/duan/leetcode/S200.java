@@ -2,30 +2,31 @@ package com.duan.leetcode;
 
 public class S200 {
     public int numIslands(char[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
         int ret = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
                 if(grid[i][j] == '1') {
                     ret++;
-                    bfs(grid, i, j);
+                    track(grid, i, j);
                 }
             }
         }
         return ret;
     }
 
-    private void bfs(char[][] grid, int x, int y) {
-        if(x >= grid.length || x < 0 || y >= grid[0].length || y < 0) {
+    private void track(char[][] grid, int x, int y) {
+        if(x < 0 || x >= grid.length || y < 0 || y >= grid[0].length) {
             return;
         }
-        if(grid[x][y] == '0' || grid[x][y] == '2') return;
+        if(grid[x][y] != '1') {
+            return;
+        }
         grid[x][y] = '2';
-        bfs(grid, x + 1, y);
-        bfs(grid, x - 1, y);
-        bfs(grid, x, y + 1);
-        bfs(grid, x, y - 1);
+
+        track(grid, x - 1, y);
+        track(grid, x + 1, y);
+        track(grid, x, y - 1);
+        track(grid, x, y + 1);
     }
 
     public static void main(String[] args) {

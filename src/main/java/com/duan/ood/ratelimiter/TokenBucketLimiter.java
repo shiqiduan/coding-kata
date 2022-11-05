@@ -1,7 +1,5 @@
 package com.duan.ood.ratelimiter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -10,9 +8,13 @@ import java.util.concurrent.*;
  * 核心：使用同步队列来降低桶满和桶为0 的时候的边界情况的同步处理。
  * 测试：使用多线程来测试，注意覆盖的场景。
  *
+ * 问题：
+ * 1、分发速度的问题，不精确
+ * 2、获取的过程没有排队，无法 block 到有效值。等于实现的是block 一定时间
+ *
  * @author shiqiduan
  */
-public class TokenBucketLimiter implements RateLimiter{
+public class TokenBucketLimiter {
     private double rate;
     private final int capacity;
     private final BlockingQueue<Integer> bucket;
@@ -23,6 +25,8 @@ public class TokenBucketLimiter implements RateLimiter{
         this.capacity = capacity;
         this.bucket = new ArrayBlockingQueue<>(capacity);
 
+        int gap = (int) (1000 / rate);
+
         scheduledExecutorService.scheduleAtFixedRate(() -> {
             int n = (int)Math.min(rate, this.capacity - bucket.size());
             for (int i = 0; i < n; i++) {
@@ -32,52 +36,25 @@ public class TokenBucketLimiter implements RateLimiter{
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    @Override
-    public int acquire() {
-        Integer poll = bucket.poll();
-        return (poll == null) ? 0 : 1;
-    }
-
-    @Override
-    public int acquire(int permits) {
-        List<Integer> list = new ArrayList<>();
-        bucket.drainTo(list, permits);
-        return list.size();
-    }
-
-    @Override
-    public double getRate() {
-        return this.rate;
-    }
-
-    @Override
-    public void setRate(double permitsPerSecond) {
-        this.rate = permitsPerSecond;
+    public void acquire() {
+        Integer poll = null;
+        try {
+            bucket.poll(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException();
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        TokenBucketLimiter limiter = new TokenBucketLimiter(5, 2);
-        List<Runnable> tasks = new ArrayList<>();
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        TokenBucketLimiter limiter = new TokenBucketLimiter(4, 3);
+        ExecutorService executorService = Executors.newCachedThreadPool();
 
-        Thread.sleep(10000);
-
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(Thread.currentThread() + " = " + System.currentTimeMillis() / 1000);
-            }
-        };
-
-        for (int i = 0; i < 50; i++) {
-            int acquire = limiter.acquire(1);
-            if(acquire != 0) {
-                executor.execute(runnable);
-            }
-            Thread.sleep(200);
+        for (int i = 0; i < 100; i++) {
+            executorService.execute(() -> {
+                limiter.acquire();
+                System.out.println(System.currentTimeMillis() / 1000);
+            });
         }
-
-        Thread.sleep(20000);
-        System.out.println("end");
+        executorService.shutdown();
     }
 }
