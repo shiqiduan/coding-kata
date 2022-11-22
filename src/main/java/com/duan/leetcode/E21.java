@@ -2,29 +2,25 @@ package com.duan.leetcode;
 
 public class E21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if(list1 == null) return list2;
-        if(list2 == null) return list1;
+        ListNode head = new ListNode();
+        ListNode current = head;
 
-        ListNode head;
-        ListNode a = list1;
-        ListNode b = list2;
-        if(a.val <= b.val) {
-            head = a;
-        } else {
-            head = b;
-        }
-
-        while (a != null && b != null) {
-            if(a.val <= b.val) {
-                ListNode temp = a.next;
-                a.next = b;
-                a = temp;
+        while (list1 != null && list2 != null) {
+            if(list1.val <= list2.val) {
+                current.next = list1;
+                list1 = list1.next;
             } else {
-                ListNode temp = b.next;
-                b.next = a;
-                b = temp;
+                current.next = list2;
+                list2 = list2.next;
             }
+            current = current.next;
         }
-        return head;
+        if(list1 != null) {
+            current.next = list1;
+        }
+        if(list2 != null) {
+            current.next = list2;
+        }
+        return head.next;
     }
 }
