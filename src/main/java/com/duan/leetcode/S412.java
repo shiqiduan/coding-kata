@@ -1,19 +1,20 @@
-package com.duan;
+package com.duan.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class S412 {
-    public List<String> fizzBuzz(int n) {
-        List<String> ret = new ArrayList<>();
+    public List<String> fizzBuzz(final int n) {
+        final List<String> ret = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
-            int x3 = i % 3, x5 = i % 5;
+            final int x3 = i % 3;
+            final int x5 = i % 5;
 
-            if(x3 == 0 && x5 == 0) {
+            if (x3 == 0 && x5 == 0) {
                 ret.add("FizzBuzz");
-            } else if(x3 == 0) {
+            } else if (x3 == 0) {
                 ret.add("Fizz");
-            } else if(x5 == 0) {
+            } else if (x5 == 0) {
                 ret.add("Buzz");
             } else {
                 ret.add(i + "");
