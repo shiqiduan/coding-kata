@@ -46,7 +46,5 @@ public class E74 {
 
     public static void main(String[] args) {
         E74 e = new E74();
-
-        System.out.println(e.searchMatrix());
     }
 }
