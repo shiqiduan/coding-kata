@@ -5,10 +5,14 @@ public class TreeNode {
     TreeNode left;
     TreeNode right;
     TreeNode parent;
-    TreeNode() {};
+
+    TreeNode() {
+    }
+
     TreeNode(int val) {
         this.val = val;
     }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
@@ -17,8 +21,6 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        return "TreeNode{" +
-                "val=" + this.val +
-                '}';
+        return "TreeNode{" + "val=" + this.val + ", left=" + this.left + ", right=" + this.right + '}';
     }
 }
