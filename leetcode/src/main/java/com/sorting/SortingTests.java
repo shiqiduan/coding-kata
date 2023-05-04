@@ -13,7 +13,8 @@ public class SortingTests {
 //        Sorting sorter = new InsertionSort();
 //        Sorting sorter = new BubbleSort();
 //        Sorting sorter = new SelectionSort();
-        Sorting sorter = new QuickSort();
+//        Sorting sorter = new QuickSort();
+        Sorting sorter = new MergeSort();
 
         assertArray(new int[]{3, 3, 3, 3, 1}, sorter);
         assertArray(new int[]{1, 2, 3}, sorter);
