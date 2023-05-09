@@ -2,20 +2,19 @@ package com.sorting;
 
 public class BubbleSort implements Sorting {
     public int[] sort(int[] nums) {
-        if (nums.length <= 1) return nums;
-        boolean swapped = true;
-        int len = nums.length - 1;
-        while (swapped) {
-            swapped = false;
-            for (int i = 0; i < len; i++) {
-                if (nums[i] > nums[i + 1]) {
-                    int temp = nums[i];
-                    nums[i] = nums[i + 1];
-                    nums[i + 1] = temp;
+        boolean swapped = false;
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < nums.length - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
                     swapped = true;
                 }
             }
-            len--;
+            if (!swapped) {
+                return nums;
+            }
         }
         return nums;
     }
