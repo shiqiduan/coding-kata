@@ -12,7 +12,7 @@ public class E125 {
             }
         }
         StringBuilder sb2 = new StringBuilder(sb).reverse();
-        return sb.toString().equals(sb2.toString());
+        return sb.toString().contentEquals(sb2);
     }
 
 

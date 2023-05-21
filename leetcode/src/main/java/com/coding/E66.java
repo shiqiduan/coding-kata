@@ -17,9 +17,7 @@ public class E66 {
         if (carry > 0) {
             int[] ret = new int[digits.length + 1];
             ret[0] = 1;
-            for (int i = 0; i < digits.length; i++) {
-                ret[i + 1] = digits[i];
-            }
+            System.arraycopy(digits, 0, ret, 1, digits.length);
             digits = ret;
         }
         return digits;

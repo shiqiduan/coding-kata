@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class M17 {
-    private Map<Integer, String> map = new HashMap<Integer, String>();
+    private final Map<Integer, String> map = new HashMap<Integer, String>();
 
     {
         map.put(2, "abc");
@@ -29,7 +29,7 @@ public class M17 {
             for (int j = 0; j < str.length(); j++) {
                 char a = str.charAt(j);
                 if (prev.isEmpty()) {
-                    current.add(a + "");
+                    current.add(String.valueOf(a));
                 } else {
                     for (int k = 0; k < prev.size(); k++) {
                         current.add(prev.get(k) + a);

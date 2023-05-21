@@ -14,7 +14,7 @@ public class E412 {
             } else if (i % 5 == 0) {
                 ret.add("Buzz");
             } else {
-                ret.add(i + "");
+                ret.add(String.valueOf(i));
             }
         }
         return ret;

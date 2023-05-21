@@ -14,8 +14,6 @@ public class E88 {
                 m--;
             }
         }
-        for (int i = 0; i < n; i++) {
-            nums1[i] = nums2[i];
-        }
+        if (n >= 0) System.arraycopy(nums2, 0, nums1, 0, n);
     }
 }

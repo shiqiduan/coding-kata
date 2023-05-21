@@ -11,7 +11,7 @@ public class E202 {
             if (map.containsKey(n)) {
                 return false;
             }
-            String ns = n + "";
+            String ns = String.valueOf(n);
             int x = 0;
             for (int i = 0; i < ns.length(); i++) {
                 int t = Character.getNumericValue(ns.codePointAt(i));

@@ -32,6 +32,5 @@ public class E697 {
     public static void main(String[] args) {
         E697 e = new E697();
         System.out.println(e.findShortestSubArray(new int[]{1, 2, 2, 3, 1}));
-        ;
     }
 }

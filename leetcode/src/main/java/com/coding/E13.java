@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class E13 {
-    private Map<Character, Integer> map = new HashMap<Character, Integer>();
+    private final Map<Character, Integer> map = new HashMap<Character, Integer>();
 
     {
         map.put('I', 1);

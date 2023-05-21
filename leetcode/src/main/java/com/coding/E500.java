@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class E500 {
-    private Map<Character, Integer> map = new HashMap<Character, Integer>();
+    private final Map<Character, Integer> map = new HashMap<Character, Integer>();
 
     {
         List<String> list = new ArrayList<>();

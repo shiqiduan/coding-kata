@@ -2,7 +2,15 @@ package org.example.java14;
 
 import static java.util.Calendar.*;
 
+/**
+ * The type Demo.
+ */
 public class Demo {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         testSwitch();
         testRecord();
@@ -10,6 +18,9 @@ public class Demo {
         testInstanceOf();
     }
 
+    /**
+     * Test switch.
+     */
     public static void testSwitch() {
         int day = 10;
         int numLetters = switch (day) {
@@ -39,6 +50,9 @@ public class Demo {
         System.out.println(p3);
     }
 
+    /**
+     * Test null pointer exceptions.
+     */
     public static void testNullPointerExceptions() {
         String a = "a";
         try {
@@ -49,6 +63,9 @@ public class Demo {
         }
     }
 
+    /**
+     * Test instance of.
+     */
     public static void testInstanceOf() {
         Object obj = "aaaaa";
         if (obj instanceof String s) {
@@ -57,18 +74,35 @@ public class Demo {
     }
 }
 
+/**
+ * The type Point.
+ */
 record Point(int x, int y) {
     private static final int ZERO = 0;
     private static long instanceCounter = 0;
 
+    /**
+     * Instantiates a new Point.
+     */
     public Point() {
         this(ZERO, ZERO);
     }
 
+    /**
+     * Instantiates a new Point.
+     *
+     * @param value the value
+     */
     public Point(int value) {
         this(value, value);
     }
 
+    /**
+     * Instantiates a new Point.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;

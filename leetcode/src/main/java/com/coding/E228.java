@@ -12,7 +12,7 @@ public class E228 {
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != (nums[i - 1] + 1)) {
                 if (s == e) {
-                    ret.add(s + "");
+                    ret.add(String.valueOf(s));
                 } else {
                     ret.add(s + "->" + e);
                 }
@@ -21,7 +21,7 @@ public class E228 {
             e = nums[i];
         }
         if (s == e) {
-            ret.add(s + "");
+            ret.add(String.valueOf(s));
         } else {
             ret.add(s + "->" + e);
         }

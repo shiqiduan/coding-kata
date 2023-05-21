@@ -2,15 +2,12 @@ package org.example.java19;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.*;
 
 public class VirtualThreadTests {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        // ExecutorService executor = Executors.newFixedThreadPool(100);
+        ExecutorService executor = Executors.newFixedThreadPool(100);
 
         List<Task> tasks = new ArrayList<>();
         for (int i = 0; i < 1_000; i++) {

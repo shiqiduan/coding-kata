@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class E345 {
-    private Set<Character> set = new HashSet<Character>();
+    private final Set<Character> set = new HashSet<Character>();
 
     {
         set.add('a');

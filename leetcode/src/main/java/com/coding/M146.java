@@ -8,7 +8,7 @@ public class M146 {
 
 class LRUCache {
 
-    private Map<Integer, Integer> cache;
+    private final Map<Integer, Integer> cache;
     private int capacity = 0;
 
     public LRUCache(int capacity) {

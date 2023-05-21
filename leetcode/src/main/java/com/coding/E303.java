@@ -5,7 +5,7 @@ public class E303 {
 
 class NumArray {
 
-    private int[] array;
+    private final int[] array;
 
     public NumArray(int[] nums) {
         array = new int[nums.length];

@@ -7,8 +7,8 @@ public class E703 {
 
 class KthLargest {
 
-    private PriorityQueue<Integer> queue;
-    private int limit;
+    private final PriorityQueue<Integer> queue;
+    private final int limit;
 
     public KthLargest(int k, int[] nums) {
         queue = new PriorityQueue<Integer>();

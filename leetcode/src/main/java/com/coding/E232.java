@@ -8,8 +8,8 @@ public class E232 {
 
 class MyQueue {
 
-    private Stack<Integer> data = new Stack<Integer>();
-    private Stack<Integer> temp = new Stack<Integer>();
+    private final Stack<Integer> data = new Stack<Integer>();
+    private final Stack<Integer> temp = new Stack<Integer>();
 
     public MyQueue() {
 
