@@ -1,16 +1,20 @@
-package com.coding;
+package com.coding.two;
 
 public class M198 {
+    /**
+     * f(n) = max(f(n - 1), f(n - 2) + current)
+     *
+     * @param nums
+     * @return
+     */
     public int rob(int[] nums) {
-        int[] dp = new int[nums.length + 3];
-        dp[0] = 0;
-        dp[1] = 0;
-        dp[2] = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int x = i + 3;
-            dp[x] = Math.max(dp[x - 2], dp[x - 3]) + nums[i];
+        int a = 0, b = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int c = Math.max(a + nums[i], b);
+            a = b;
+            b = c;
         }
-        return Math.max(dp[dp.length - 1], dp[dp.length - 2]);
+        return b;
     }
 
     public static void main(String[] args) {
