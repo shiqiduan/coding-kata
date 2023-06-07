@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +13,7 @@ public class M139 {
         for (int i = 0; i < s.length(); i++) {
             for (int j = i; j < s.length(); j++) {
                 if (dp[i] && set.contains(s.substring(i, j + 1))) {
-                    dp[j] = true;
+                    dp[j + 1] = true;
                 }
             }
         }
