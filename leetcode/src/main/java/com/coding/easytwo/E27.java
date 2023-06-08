@@ -1,20 +1,21 @@
-package com.coding;
+package com.coding.easytwo;
 
+/**
+ * 同 E26， 双指针
+ */
 public class E27 {
     public int removeElement(int[] nums, int val) {
-        int left = 0, right = 0;
-        while (right < nums.length) {
-            if (nums[right] == val) {
-                right++;
-            } else {
-                if (left != right) {
-                    nums[left] = nums[right];
+        int a = -1, b = 0;
+        while (b < nums.length) {
+            if (nums[b] != val) {
+                a++;
+                if (a != b) {
+                    nums[a] = nums[b];
                 }
-                left++;
-                right++;
             }
+            b++;
         }
-        return left;
+        return a + 1;
     }
 
     public static void main(String[] args) {
