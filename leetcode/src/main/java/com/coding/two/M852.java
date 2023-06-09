@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two;
 
 public class M852 {
     public int peakIndexInMountainArray(int[] arr) {
@@ -10,9 +10,7 @@ public class M852 {
             }
             if (arr[mid] > arr[mid - 1] && arr[mid] < arr[mid + 1]) {
                 s = mid + 1;
-                continue;
-            }
-            if (arr[mid] < arr[mid - 1] && arr[mid] > arr[mid + 1]) {
+            } else {
                 e = mid - 1;
             }
         }

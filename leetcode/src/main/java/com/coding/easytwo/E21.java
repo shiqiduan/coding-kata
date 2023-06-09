@@ -1,4 +1,6 @@
-package com.coding;
+package com.coding.easytwo;
+
+import com.coding.ListNode;
 
 public class E21 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

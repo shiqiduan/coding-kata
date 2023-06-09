@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.easytwo;
 
 import java.util.HashMap;
 import java.util.Map;
