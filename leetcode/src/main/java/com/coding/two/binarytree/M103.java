@@ -1,4 +1,6 @@
-package com.coding;
+package com.coding.two.binarytree;
+
+import com.coding.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Collections;

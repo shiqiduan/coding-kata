@@ -1,4 +1,6 @@
-package com.coding;
+package com.coding.easytwo;
+
+import com.coding.TreeNode;
 
 public class E112 {
     public boolean hasPathSum(TreeNode root, int targetSum) {

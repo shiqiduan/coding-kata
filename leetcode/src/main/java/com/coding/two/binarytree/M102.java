@@ -1,20 +1,22 @@
-package com.coding;
+package com.coding.two.binarytree;
+
+import com.coding.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class M199 {
-    public List<Integer> rightSideView(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
-        List<Integer> ans = new ArrayList<>();
+public class M102 {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         List<TreeNode> level = new ArrayList<>();
         level.add(root);
         while (!level.isEmpty()) {
-            ans.add(level.get(level.size() - 1).val);
             List<TreeNode> newLevel = new ArrayList<>();
-            for (TreeNode node : level) {
+            List<Integer> temp = new ArrayList<>();
+            for (int i = 0; i < level.size(); i++) {
+                TreeNode node = level.get(i);
+                temp.add(node.val);
                 if (node.left != null) {
                     newLevel.add(node.left);
                 }
@@ -23,6 +25,7 @@ public class M199 {
                 }
             }
             level = newLevel;
+            ans.add(temp);
         }
         return ans;
     }
