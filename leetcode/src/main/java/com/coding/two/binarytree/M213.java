@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two.binarytree;
 
 public class M213 {
     public int rob(int[] nums) {
