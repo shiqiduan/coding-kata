@@ -8,7 +8,7 @@ import com.coding.ListNode;
 public class M2 {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return addTwoNumbers1(l1, l2, 0);
+        return addTwoNumbers(l1, l2, 0);
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2, int carry) {
