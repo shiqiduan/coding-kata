@@ -1,4 +1,4 @@
-package com.coding.two;
+package com.coding.two.heap;
 
 import java.util.HashMap;
 import java.util.Map;

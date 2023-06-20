@@ -1,4 +1,4 @@
-package com.coding.ds;
+package com.coding.two.heap;
 
 import java.util.Arrays;
 
