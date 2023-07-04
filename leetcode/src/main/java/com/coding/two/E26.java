@@ -1,21 +1,20 @@
-package com.coding.easytwo;
+package com.coding.two;
 
 /**
  * 双指针
  */
 public class E26 {
     public int removeDuplicates(int[] nums) {
-        int a = 0, b = 1;
-        while (b < nums.length) {
-            if (nums[a] != nums[b]) {
-                a++;
-                if (a != b) {
-                    nums[a] = nums[b];
+        int last = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[last] != nums[i]) {
+                last++;
+                if (last != i) {
+                    nums[last] = nums[i];
                 }
             }
-            b++;
         }
-        return a + 1;
+        return last + 1;
     }
 
     public static void main(String[] args) {

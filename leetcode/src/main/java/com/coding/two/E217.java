@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two;
 
 import java.util.HashSet;
 import java.util.Set;

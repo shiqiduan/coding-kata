@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two;
 
 public class E704 {
     public int search(int[] nums, int target) {
@@ -7,12 +7,13 @@ public class E704 {
             int mid = s + (e - s) / 2;
             if (nums[mid] == target) {
                 return mid;
-            } else if (nums[mid] > target) {
+            }
+            if (nums[mid] > target) {
                 e = mid - 1;
             } else {
                 s = mid + 1;
             }
         }
-        return (s > e) ? -1 : s;
+        return -1;
     }
 }
