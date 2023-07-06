@@ -1,4 +1,4 @@
-package com.coding.two.stack;
+package com.coding.three;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
