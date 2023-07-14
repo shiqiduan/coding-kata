@@ -1,12 +1,13 @@
-package com.coding.easytwo;
+package com.coding.two;
 
 import com.coding.TreeNode;
 
 public class E226 {
     public TreeNode invertTree(TreeNode root) {
-        if (root == null) return root;
+        if (root == null) return null;
         TreeNode left = invertTree(root.left);
-        root.left = invertTree(root.right);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
         root.right = left;
         return root;
     }
