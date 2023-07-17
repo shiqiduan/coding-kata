@@ -1,4 +1,4 @@
-package com.coding.two;
+package com.coding.three;
 
 public class M198 {
     /**
@@ -10,11 +10,11 @@ public class M198 {
     public int rob(int[] nums) {
         int a = 0, b = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            int c = Math.max(a + nums[i], b);
-            a = b;
-            b = c;
+            int temp = b;
+            b = a + nums[i];
+            a = Math.max(a, temp);
         }
-        return b;
+        return Math.max(a, b);
     }
 
     public static void main(String[] args) {

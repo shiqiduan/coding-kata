@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.two;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -6,11 +6,14 @@ import java.util.Set;
 
 public class E268 {
     public int missingNumber(int[] nums) {
-        int total = nums.length * (nums.length + 1) / 2;
+        int ans = 0;
         for (int i = 0; i < nums.length; i++) {
-            total -= nums[i];
+            ans ^= nums[i];
         }
-        return total;
+        for (int i = 0; i <= nums.length; i++) {
+            ans ^= i;
+        }
+        return ans;
     }
 
     public int missingNumber3(int[] nums) {
