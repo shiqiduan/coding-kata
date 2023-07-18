@@ -4,24 +4,20 @@ import org.junit.Assert;
 
 public class M91 {
     public int numDecodings(String s) {
-        if (s.charAt(0) == '0') return 0;
-
+        if (s.startsWith("0")) return 0;
+        if (s.length() == 1) return 1;
         int a = 1, b = 1;
-
         for (int i = 1; i < s.length(); i++) {
-            char curr = s.charAt(i), p = s.charAt(i - 1);
-
+            int curr = s.charAt(i);
             int c = 0;
-
-            if (curr == '0') {
-                if (p == '1' || p == '2') {
-                    c = a;
-                }
-            } else {
-                c = b;
-                if (p == '1' || p == '2' && curr <= '6') {
-                    c += a;
-                }
+            if (curr != '0') {
+                c += b;
+            }
+            if (s.charAt(i - 1) == '1') {
+                c += a;
+            }
+            if (s.charAt(i - 1) == '2' && curr >= '0' && curr <= '6') {
+                c += a;
             }
             a = b;
             b = c;
@@ -32,6 +28,7 @@ public class M91 {
     public static void main(String[] args) {
         M91 m = new M91();
 
+        Assert.assertEquals(4, m.numDecodings("2611055971756562"));
         Assert.assertEquals(2, m.numDecodings("12"));
         Assert.assertEquals(3, m.numDecodings("226"));
         Assert.assertEquals(0, m.numDecodings("06"));

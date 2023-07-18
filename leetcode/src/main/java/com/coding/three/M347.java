@@ -1,24 +1,29 @@
 package com.coding.three;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class M347 {
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> itemCountMap = new HashMap<>();
+        Map<Integer, Integer> countMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            itemCountMap.put(nums[i], itemCountMap.getOrDefault(nums[i], 0) + 1);
+            countMap.put(nums[i], countMap.getOrDefault(nums[i], 0) + 1);
         }
-        PriorityQueue<int[]> heap = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]);
-        for (Map.Entry<Integer, Integer> entry : itemCountMap.entrySet()) {
+        PriorityQueue<int[]> heap = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
             heap.add(new int[]{entry.getKey(), entry.getValue()});
             if (heap.size() > k) {
                 heap.poll();
             }
         }
-        List<Integer> ans = new ArrayList<>();
-        for (int[] x : heap) {
-            ans.add(x[0]);
+        int[] ans = new int[k];
+        int i = k - 1;
+        while (!heap.isEmpty()) {
+            ans[i] = heap.poll()[0];
+            i--;
         }
-        return ans.stream().mapToInt(value -> value).toArray();
+        return ans;
     }
 }
