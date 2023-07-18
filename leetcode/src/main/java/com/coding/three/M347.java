@@ -1,4 +1,4 @@
-package com.coding.two.heap;
+package com.coding.three;
 
 import java.util.*;
 
