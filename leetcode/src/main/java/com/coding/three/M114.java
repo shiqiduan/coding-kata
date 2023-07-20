@@ -1,4 +1,4 @@
-package com.coding.two.binarytree;
+package com.coding.three;
 
 import com.coding.TreeNode;
 
