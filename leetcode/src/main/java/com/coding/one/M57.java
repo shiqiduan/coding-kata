@@ -1,44 +1,43 @@
-package com.coding.one;
+package com.coding.two;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class M57 {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        if (intervals.length == 0) return new int[][]{newInterval};
+        if (intervals.length == 0) {
+            return new int[][]{newInterval};
+        }
+        List<int[]> ret = new ArrayList<>();
 
-        List<int[]> list = new ArrayList<>();
-        int sn = newInterval[0], en = newInterval[1];
+        int start = newInterval[0];
+        int end = newInterval[1];
         boolean done = false;
-        for (int i = 1; i < intervals.length; i++) {
-            int s = intervals[i][0], e = intervals[i][1];
-            if (e < newInterval[0]) {
-                list.add(intervals[i]);
+        for (int[] x : intervals) {
+            if (x[0] < newInterval[0] && x[1] < newInterval[0]) {
+                ret.add(x);
                 continue;
             }
-            if (s > newInterval[1]) {
+            if (x[0] > newInterval[1]) {
                 if (!done) {
-                    list.add(new int[]{sn, en});
+                    ret.add(new int[]{start, end});
                     done = true;
                 }
-                list.add(intervals[i]);
+                ret.add(x);
                 continue;
             }
-            if (s < sn) {
-                sn = s;
+
+            if (x[0] < start) {
+                start = x[0];
             }
-            if (e > en) {
-                en = e;
+            if (x[1] > end) {
+                end = x[1];
             }
         }
         if (!done) {
-            list.add(new int[]{sn, en});
+            ret.add(new int[]{start, end});
         }
 
-        int[][] ans = new int[list.size()][2];
-        for (int i = 0; i < list.size(); i++) {
-            ans[i] = list.get(i);
-        }
-        return ans;
+        return ret.toArray(new int[ret.size()][2]);
     }
 }
