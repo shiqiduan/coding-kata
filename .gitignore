@@ -37,3 +37,8 @@ out/
 .vscode/
 
 target/
+
+
+### Python
+venv/
+*.pyc
